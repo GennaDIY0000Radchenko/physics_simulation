@@ -10,6 +10,7 @@ struct PhysicObject
     Vec2 position      = {0.0f, 0.0f};
     Vec2 last_position = {0.0f, 0.0f};
     Vec2 acceleration  = {0.0f, 0.0f};
+    float VELOCITY_DAMPING = 40.0f; // approximating air friction
     sf::Color color;
 
     PhysicObject() = default;
@@ -29,8 +30,6 @@ struct PhysicObject
     void update(float dt)
     {
         const Vec2 last_update_move = position - last_position;
-
-        const float VELOCITY_DAMPING = 40.0f; // arbitrary, approximating air friction
 
         const Vec2 new_position = position + last_update_move + (acceleration - last_update_move * VELOCITY_DAMPING) * (dt * dt);
         last_position           = position;
