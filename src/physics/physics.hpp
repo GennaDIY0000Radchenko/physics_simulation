@@ -117,6 +117,12 @@ struct PhysicSolver
         return objects.push_back(object);
     }
 
+    // Delete all objects from solver
+    void deleteAllObjects()
+    {
+        objects.clear();
+    }
+
     // Add a new object to the solver
     uint64_t createObject(Vec2 pos)
     {
